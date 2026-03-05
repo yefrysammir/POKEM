@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#6C5CE7">
+    <meta name="description" content="Monster GO - Atrapa monstruos en el mundo real">
+    
+    <title>Monster GO</title>
+    
+    <!-- Material Symbols Outlined -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/map.css">
+    <link rel="stylesheet" href="css/battle.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Manifest PWA -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <div class="splash-logo">
+                <span class="material-symbols-outlined">catching_pokemon</span>
+            </div>
+            <h1>Monster GO</h1>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p class="loading-text">Cargando mundo...</p>
+        </div>
+    </div>
+
+    <!-- App Container -->
+    <div id="app" class="app hidden">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="player-info">
+                <div class="avatar">
+                    <span class="material-symbols-outlined">account_circle</span>
+                </div>
+                <div class="player-details">
+                    <span class="player-name" id="player-name">Entrenador</span>
+                    <div class="player-level">
+                        <span class="level-badge">Nv. <span id="player-level">1</span></span>
+                        <div class="xp-bar">
+                            <div class="xp-fill" id="xp-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="resources">
+                <div class="resource">
+                    <span class="material-symbols-outlined">paid</span>
+                    <span id="coins">0</span>
+                </div>
+                <div class="resource">
+                    <span class="material-symbols-outlined">stars</span>
+                    <span id="dust">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main id="main-content" class="main-content">
+            <!-- Las vistas se cargan dinámicamente aquí -->
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" data-view="map">
+                <span class="material-symbols-outlined">explore</span>
+                <span>Mapa</span>
+            </button>
+            <button class="nav-btn" data-view="pokemon">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <span>Monstruos</span>
+            </button>
+            <button class="nav-btn" data-view="raid">
+                <span class="material-symbols-outlined">local_fire_department</span>
+                <span>Raids</span>
+            </button>
+            <button class="nav-btn" data-view="inventory">
+                <span class="material-symbols-outlined">backpack</span>
+                <span>Mochila</span>
+            </button>
+            <button class="nav-btn" data-view="shop">
+                <span class="material-symbols-outlined">shopping_bag</span>
+                <span>Tienda</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Modales -->
+    <div id="modal-overlay" class="modal-overlay hidden"></div>
+
+    <!-- Scripts -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
