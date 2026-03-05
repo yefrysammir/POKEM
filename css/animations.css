@@ -1,1 +1,322 @@
+/* ============================================
+   ANIMACIONES Y EFECTOS ESPECIALES
+   ============================================ */
 
+/* Captura de Pokémon */
+.catch-scene {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, #87CEEB 0%, #98FB98 100%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.catch-scene.night {
+  background: linear-gradient(180deg, #191970 0%, #4B0082 100%);
+}
+
+.wild-pokemon {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  animation: wild-appear 0.5s ease;
+}
+
+.wild-pokemon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+}
+
+.wild-pokemon.caught {
+  animation: caught-shrink 0.5s ease forwards;
+}
+
+@keyframes wild-appear {
+  0% { transform: scale(0) translateY(100px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+@keyframes caught-shrink {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+/* Anillo de captura */
+.catch-ring {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border: 4px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: ring-pulse 2s infinite;
+}
+
+.catch-ring.inner {
+  width: 200px;
+  height: 200px;
+  animation-delay: 0.5s;
+}
+
+@keyframes ring-pulse {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Pokébola */
+.pokeball {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  cursor: grab;
+  transition: transform 0.1s;
+  z-index: 100;
+}
+
+.pokeball:active {
+  cursor: grabbing;
+  transform: scale(0.9);
+}
+
+.pokeball-throwing {
+  animation: throw 0.8s ease-out forwards;
+}
+
+.pokeball-shaking {
+  animation: shake-ball 0.5s ease 3;
+}
+
+.pokeball-success {
+  animation: success-bounce 0.5s ease;
+}
+
+.pokeball-fail {
+  animation: fail-drop 0.5s ease;
+}
+
+@keyframes throw {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-200px) scale(0.5); }
+  100% { transform: translateY(0) scale(0.3); }
+}
+
+@keyframes shake-ball {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-15deg); }
+  75% { transform: rotate(15deg); }
+}
+
+@keyframes success-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes fail-drop {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100px) rotate(90deg); opacity: 0; }
+}
+
+/* Partículas de captura */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--success);
+  border-radius: 50%;
+  animation: particle-explode 0.6s ease-out forwards;
+}
+
+@keyframes particle-explode {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+}
+
+/* Efecto de evolución */
+.evolution-scene {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.evolution-light {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, white 0%, transparent 70%);
+  animation: evolution-flash 3s ease;
+  opacity: 0;
+}
+
+.evolution-pokemon {
+  width: 250px;
+  height: 250px;
+  position: relative;
+  z-index: 10;
+}
+
+.evolution-pokemon.old {
+  animation: evolution-fade-out 1s ease 0.5s forwards;
+}
+
+.evolution-pokemon.new {
+  opacity: 0;
+  animation: evolution-fade-in 1s ease 2s forwards;
+}
+
+@keyframes evolution-flash {
+  0%, 100% { opacity: 0; }
+  20%, 80% { opacity: 1; }
+}
+
+@keyframes evolution-fade-out {
+  to { opacity: 0; transform: scale(0.5); }
+}
+
+@keyframes evolution-fade-in {
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Efectos de clima */
+.weather-sunny {
+  background: linear-gradient(180deg, #FFD700 0%, #FFA500 100%);
+}
+
+.weather-rainy {
+  background: linear-gradient(180deg, #4682B4 0%, #2F4F4F 100%);
+}
+
+.weather-cloudy {
+  background: linear-gradient(180deg, #708090 0%, #2F4F4F 100%);
+}
+
+.weather-windy {
+  background: linear-gradient(180deg, #87CEEB 0%, #4682B4 100%);
+}
+
+/* Transiciones entre vistas */
+.view-transition {
+  animation: view-fade-in 0.3s ease;
+}
+
+@keyframes view-fade-in {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Efecto de nivel up */
+.level-up-effect {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3000;
+  text-align: center;
+  pointer-events: none;
+}
+
+.level-up-text {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--warning);
+  text-transform: uppercase;
+  animation: level-up-pop 1s ease;
+  text-shadow: 0 0 30px rgba(255, 217, 61, 0.8);
+}
+
+.level-up-stars {
+  position: absolute;
+  inset: -100px;
+}
+
+.star {
+  position: absolute;
+  color: var(--warning);
+  font-size: 2rem;
+  animation: star-burst 1s ease forwards;
+}
+
+@keyframes level-up-pop {
+  0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+  50% { transform: scale(1.2) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes star-burst {
+  0% { transform: translate(0, 0) scale(0); opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(1); opacity: 0; }
+}
+
+/* Efecto de item encontrado */
+.item-found {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-secondary);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  text-align: center;
+  z-index: 1500;
+  animation: item-pop 0.5s ease;
+  box-shadow: var(--shadow-lg);
+}
+
+.item-found-icon {
+  width: 100px;
+  height: 100px;
+  background: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-md);
+  animation: item-bounce 0.5s ease infinite alternate;
+}
+
+.item-found-icon .material-symbols-outlined {
+  font-size: 60px;
+  color: white;
+}
+
+@keyframes item-pop {
+  0% { transform: translate(-50%, -50%) scale(0); }
+  80% { transform: translate(-50%, -50%) scale(1.1); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes item-bounce {
+  to { transform: translateY(-10px); }
+}
+
+/* Efectos de rareza */
+.rarity-common { filter: brightness(1); }
+.rarity-uncommon { filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); }
+.rarity-rare { filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.8)); }
+.rarity-epic { filter: drop-shadow(0 0 15px rgba(189, 0, 255, 0.8)); }
+.rarity-legendary { 
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9));
+  animation: legendary-pulse 2s infinite;
+}
+
+@keyframes legendary-pulse {
+  0%, 100% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9)); }
+  50% { filter: drop-shadow(0 0 30px rgba(255, 215, 0, 1)); }
+}
